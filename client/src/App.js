@@ -15,10 +15,12 @@ const App = () => {
     const user = localStorage.getItem("token")
     return (
         <div>
-            <Navbar/>
+            {user && <Navbar/>}
             <Routes>
-                <Route path="/signup" exact element={<Signup/>}/>
-                <Route path="/login" exact element={<Login/>}/>
+                {/*<Route path="/signup" element={<Signup/>}/>*/}
+                {!user ? <Route path="/signup" element={<Signup/>}/> : <Route path="/signup" element={<Navigate replace to="/list"/>}/>}
+                {/*<Route path="/login" element={<Login/>}/>*/}
+                {!user ? <Route path="/login" element={<Login/>}/> : <Route path="/login" element={<Navigate replace to="/list"/>}/>}
                 {user && <Route path="/" element={<RecordList/>}/>}
                 <Route path="/" element={<Navigate replace to="/login"/>}/>
                 {user && <Route path="/list" element={<RecordList/>}/>}

@@ -5,6 +5,7 @@ import {Pie} from 'react-chartjs-2';
 import {ArcElement, Chart, Legend, Tooltip} from 'chart.js';
 import './drivers.css';
 import {json2xml} from "xml-js";
+
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 Chart.register(ArcElement, Legend, Tooltip);
@@ -60,7 +61,7 @@ const Drivers = () => {
     const ExportJSON = () => {
         const jsonData = JSON.stringify(drivers, null, 2);
         const blob = new Blob([jsonData], {type: 'application/json'});
-        Download(blob,'json')
+        Download(blob, 'json')
     };
 
     const ExportXML = () => {
@@ -81,10 +82,10 @@ const Drivers = () => {
                         </li>
                     ))}
                 </ul>
-                <button onClick={ExportJSON}>
+                <button className="btn btn-danger ms-4" onClick={ExportJSON}>
                     JSON
                 </button>
-                <button onClick={ExportXML}>
+                <button className="btn btn-danger m-2" onClick={ExportXML}>
                     XML
                 </button>
             </div>
