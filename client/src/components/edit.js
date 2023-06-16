@@ -72,9 +72,8 @@ export default function Edit() {
          navigate("/");
     }
 
-    // This following section will display the form that takes input from the user to update the data.
-    return (<div>
-        <h3>Create New Record</h3>
+    return (<div className="p-2 d-flex justify-content-center align-items-center">
+        <h3 className="p-4">Edit</h3>
         <form onSubmit={onSubmit}>
             <div className="form-group">
                 <label htmlFor="name">Name</label>
@@ -84,16 +83,18 @@ export default function Edit() {
                     id="name"
                     value={form.name}
                     onChange={(e) => updateForm({name: e.target.value})}
+                    required
                 />
             </div>
             <div className="form-group">
-                <label htmlFor="location">Position</label>
+                <label htmlFor="location">Location</label>
                 <input
                     type="text"
                     className="form-control"
                     id="location"
                     value={form.location}
                     onChange={(e) => updateForm({location: e.target.value})}
+                    required
                 />
             </div>
             <div className="form-group">
@@ -104,13 +105,14 @@ export default function Edit() {
                     id="country"
                     value={form.country}
                     onChange={(e) => updateForm({country: e.target.value})}
+                    required
                 />
             </div>
             <div className="form-group">
                 <input
                     type="submit"
-                    value="Add track"
-                    className="btn btn-primary"
+                    value="Edit track"
+                    className="btn btn-primary mt-2"
                 />
             </div>
         </form>

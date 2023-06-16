@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const Record = (props) => (
     <tr>
-        <td>{props.record.circuitId}</td>
+        {/*<td>{props.record.circuitId}</td>*/}
         <td>{props.record.name}</td>
         <td>{props.record.location}</td>
         <td>{props.record.country}</td>
@@ -71,10 +71,10 @@ export default function RecordList() {
     return (
         <div>
             <h3>Record List</h3>
-            <table className="table table-striped" style={{marginTop: 20}}>
+            <table className="table table-striped table-borderless table-hover table-md" style={{marginTop: 20}}>
                 <thead>
-                <tr>
-                    <th>ID</th>
+                <tr className="table-danger">
+                    {/*<th>ID</th>*/}
                     <th>Name</th>
                     <th>Location</th>
                     <th>Country</th>

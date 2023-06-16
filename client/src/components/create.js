@@ -44,6 +44,7 @@ export default function Create() {
                     id="name"
                     value={form.name}
                     onChange={(e) => updateForm({name: e.target.value})}
+                    required
                 />
             </div>
             <div className="form-group">
@@ -54,6 +55,7 @@ export default function Create() {
                     id="location"
                     value={form.location}
                     onChange={(e) => updateForm({location: e.target.value})}
+                    required
                 />
             </div>
             <div className="form-group">
@@ -64,6 +66,7 @@ export default function Create() {
                     id="country"
                     value={form.country}
                     onChange={(e) => updateForm({country: e.target.value})}
+                    required
                 />
             </div>
             <div className="form-group">

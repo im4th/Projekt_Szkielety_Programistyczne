@@ -3,10 +3,11 @@ import {User, validate} from "../models/user.mjs"
 import db from "../db/conn.mjs"
 import {ObjectId} from "mongodb"
 import bcrypt from "bcrypt"
-
+import Circuit from "../models/circuit.mjs";
 
 const router = express.Router();
 
+//Tworzenie użytkownika
 router.post("/", async (req, res) => {
     try {
         let collection = await db.collection("users");
@@ -63,7 +64,7 @@ router.get("/list", async (req, res) => {
     res.send(results).status(200);
 });
 
-// This section will help you get a single record by id
+// Pobranie pojedynczego toru
 router.get("/:id", async (req, res) => {
     let collection = await db.collection("circuits");
     let query = {_id: new ObjectId(req.params.id)};
@@ -73,20 +74,21 @@ router.get("/:id", async (req, res) => {
     else res.send(result).status(200);
 });
 
-// This section will help you create a new record.
+// Tworzenie nowego toru
 router.post("/create", async (req, res) => {
-    let newDocument = {
-        circuidId: req.body.circuidId,
-        name: req.body.name,
-        location: req.body.location,
-        country: req.body.country,
-    };
+    // let newDocument = {
+    //     circuidId: req.body.circuidId,
+    //     name: req.body.name,
+    //     location: req.body.location,
+    //     country: req.body.country,
+    // };
+    let newDocument = new Circuit;
     let collection = await db.collection("circuits");
     let result = await collection.insertOne(newDocument);
     res.send(result).status(204)
 });
 
-// This section will help you update a record by id.
+// Update toru
 router.patch("/:id", async (req, res) => {
     const query = {_id: new ObjectId(req.params.id)};
     const updates = {
@@ -105,7 +107,7 @@ router.patch("/:id", async (req, res) => {
     res.send(result).status(200);
 });
 
-// This section will help you delete a record
+// Usuwanie toru
 router.delete("/:id", async (req, res) => {
     const query = {_id: new ObjectId(req.params.id)};
 
